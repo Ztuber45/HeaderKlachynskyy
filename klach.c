@@ -20,8 +20,8 @@ int RemoveValueAll_lf(double val, double arr[], int len);
 int AddValue_lf(double val, int idx, double arr[], int len);
 
 int GetDaysInMonth(int month, int year);
-Time SecondsToTime(int seconds); // TODO
-DateTime SecondsToDateTime(int seconds); // TODO
+Time SecondsToTime(int seconds);
+DateTime SecondsToDateTime(int seconds);
 int TimeToSeconds(Time time); // TODO
 int DateTimeToSeconds(DateTime dateTime); // TODO
 Date DateAddDays(int days, Date date); // TODO
@@ -291,4 +291,47 @@ int GetDaysInMonth(int month, int year) {
                 return 0;
                 break;
         }
+}
+
+Time SecondsToTime(int seconds) {
+        Time time;
+
+        time.minute = seconds / 60;
+        time.second = seconds % 60;
+        time.hour   = time.minute / 60;
+        time.minute = time.minute % 60;
+
+        return time;
+}
+
+DateTime SecondsToDateTime(int seconds) {
+        DateTime dateTime;
+        int days;
+
+        dateTime.time.minute = seconds / 60;
+        dateTime.time.second = seconds % 60;
+        dateTime.time.hour   = dateTime.time.minute / 60;
+        dateTime.time.minute = dateTime.time.minute % 60;
+
+        days = dateTime.time.hour / 24;
+        dateTime.time.hour = dateTime.time.hour % 24;
+
+        dateTime.date.day   = 1;
+        dateTime.date.month = 1;
+        dateTime.date.year  = 0;
+
+        for (days = days; days > 0; days--) {
+                dateTime.date.day++;
+                if (dateTime.date.day > GetDaysInMonth(dateTime.date.month, dateTime.date.year)) {
+                        dateTime.date.month++;
+                        dateTime.date.day = 1;
+                }
+                if (dateTime.date.month > 12) {
+                        dateTime.date.year++;
+                        dateTime.date.month = 1;
+                        dateTime.date.day = 1;
+                }
+        }
+
+        return dateTime;
 }
