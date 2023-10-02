@@ -1,3 +1,5 @@
+#pragma once
+
 #include "klach.h"
 
 int IsBetween_i(int min, int val, int max);
