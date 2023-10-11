@@ -86,7 +86,7 @@ int GetIndex_i(int val, int arr[], int len) {
                         return i;
                 }
         }
-        return ERROR;
+        return NONE;
 }
 
 int RemoveArea_i(int start, int end, int arr[], int len) {
@@ -120,7 +120,7 @@ int AddValue_i(int val, int idx, int arr[], int len) {
         int i;
 
         if (idx > len) {
-                return ERROR;
+                return NONE;
         }
 
         for (i = len; i > idx; i--) {

@@ -1,7 +1,6 @@
 #pragma once
 
 #include "klach.h"
-#include "klachInt.h"
 
 typedef struct Date { int year; int month; int day; } Date;
 typedef struct Time { int hour; int minute; int second; } Time;
@@ -27,15 +26,15 @@ int IsLeapYear(int year) {
         return FALSE;
 }
 int IsValidDate(Date date) {
-        if (IsBetween_i(1, date.day, GetDaysInMonth(date.month, date.year))) {
+        if (1 <= date.day && date.day <= GetDaysInMonth(date.month, date.year)) {
                 return TRUE;
         }
         return FALSE;
 }
 int IsValidTime(Time time) {
-        if (IsBetween_i(0, time.hour, 23)
-            && IsBetween_i(0, time.minute, 59)
-            && IsBetween_i(0, time.second, 59)) {
+        if ((0 <= time.hour && time.hour <= 23)
+            && (0 <= time.minute && time.minute <= 59)
+            && (0 <= time.second && time.second <= 59)) {
                 return TRUE;
         }
         return FALSE;
