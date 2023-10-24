@@ -4,6 +4,11 @@
 
 int IsBetween_d(double min, double val, double max);
 
+void SortAs_d(double arr[], int len);
+void SortDes_d(double arr[], int len);
+
+int GetBiggestValue_d(double arr[], int len);
+
 int GetIndex_d(double val, double arr[], int len);
 int RemoveArea_d(int start, int end, double arr[], int len);
 int RemoveValueAll_d(double val, double arr[], int len);
@@ -52,6 +57,18 @@ void SortDes_d(double arr[], int len) {
                         arr[i1] = arr[i1] - arr[min];
                 }
         }
+}
+
+int GetBiggestValue_d(double arr[], int len) {
+        int idx;
+        double biggest = arr[0];
+
+        for (idx = 1; idx < len; idx++) {
+                if (arr[idx] > biggest) {
+                        biggest = arr[idx];
+                }
+        }
+        return biggest;
 }
 
 int GetIndex_d(double val, double arr[], int len) {
