@@ -8,6 +8,8 @@ int IsPrime(int num);
 void SortAs_i(int arr[], int len);
 void SortDes_i(int arr[], int len);
 
+int GetBiggestValue_i(int arr[], int len);
+
 int GetIndex_i(int val, int arr[], int len);
 int RemoveArea_i(int start, int end, int arr[], int len);
 int RemoveValueAll_i(int val, int arr[], int len);
@@ -76,6 +78,18 @@ void SortDes_i(int arr[], int len) {
                         arr[i1] = arr[i1] - arr[min];
                 }
         }
+}
+
+int GetBiggestValue_i(int arr[], int len) {
+        int idx;
+        int biggest = arr[0];
+
+        for (idx = 1; idx < len; idx++) {
+                if (arr[idx] > biggest) {
+                        biggest = arr[idx];
+                }
+        }
+        return biggest;
 }
 
 int GetIndex_i(int val, int arr[], int len) {
